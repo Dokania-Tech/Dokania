@@ -14,7 +14,7 @@ const HeroSection = () => {
             id: 1,
             title: 'DGTW Hydrox Brazing Solutions',
             description: 'High-quality brazing solutions for industrial applications',
-            image: 'http://dgtw.co.kr/eng/images/product/purpose01.jpg',
+            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1781963913/Screenshot_2026-06-20_192139_qkbhss.png',
             fallbackGradient: 'from-blue-500 to-cyan-500',
             // overlay: 'rgba(59, 130, 246, 0.7)' // Blue overlay
         },
@@ -22,7 +22,7 @@ const HeroSection = () => {
             id: 2,
             title: 'EPS Machinery Parts',
             description: 'Precision-engineered spare parts for EPS machinery',
-            image: 'http://dgtw.co.kr/eng/images/product/line_auto01.jpg',
+            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1781963914/Screenshot_2026-06-20_192230_jlyibd.png',
             fallbackGradient: 'from-green-500 to-emerald-500',
             // overlay: 'rgba(34, 197, 94, 0.7)' // Green overlay
         },
@@ -30,7 +30,7 @@ const HeroSection = () => {
             id: 3,
             title: 'HVAC Solutions',
             description: 'Complete HVAC system components and solutions',
-            image: 'http://dgtw.co.kr/eng/images/product/pipe08.jpg',
+            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1781963914/Screenshot_2026-06-20_192022_wflq1t.png',
             fallbackGradient: 'from-orange-500 to-red-500',
            
         },
@@ -38,7 +38,7 @@ const HeroSection = () => {
             id: 4,
             title: 'Automobile Parts',
             description: 'Reliable automotive components and spare parts',
-            image: 'https://images.pexels.com/photos/30335373/pexels-photo-30335373.jpeg',
+            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1781963913/Screenshot_2026-06-20_192206_cbzllg.png',
             fallbackGradient: 'from-purple-500 to-pink-500',
             // overlay: 'rgba(168, 85, 247, 0.7)' // Purple overlay
         },
@@ -46,7 +46,7 @@ const HeroSection = () => {
             id: 5,
             title: 'Industrial Couplings',
             description: 'Heavy-duty couplings for industrial machinery',
-            image: 'https://images.pexels.com/photos/15018559/pexels-photo-15018559.jpeg',
+            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1781963913/Screenshot_2026-06-20_192106_hj0bgl.png',
             fallbackGradient: 'from-indigo-500 to-purple-500',
            
         }
