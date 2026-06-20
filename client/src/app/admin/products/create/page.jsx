@@ -76,13 +76,7 @@ export default function CreateProductPage() {
                     <textarea name="longDescription" value={form.longDescription} onChange={onChange} placeholder="Long description" className="w-full border p-2 rounded mt-1" />
                 </div>
 
-                <div>
-                    <label className="text-xs text-gray-600">Stock status</label>
-                    <select name="inStock" value={form.inStock ? 'true' : 'false'} onChange={(e) => setForm({ ...form, inStock: e.target.value === 'true' })} className="w-full border p-2 rounded mt-1">
-                        <option value="true">In Stock</option>
-                        <option value="false">Out of Stock</option>
-                    </select>
-                </div>
+
 
                 <div className="space-y-2">
                     <ImageUploader scope="product" onUploaded={(url) => setImageUrls(prev => [...prev, url])} />
