@@ -40,7 +40,10 @@ export default function EditProductPage() {
         })();
     }, [params.id]);
 
-    const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+    const onChange = (e) => {
+        const { name, value } = e.target;
+        setForm(prev => ({ ...prev, [name]: value }));
+    };
     const onSubmit = async (e) => {
         e.preventDefault();
         setSaving(true);
@@ -75,8 +78,8 @@ export default function EditProductPage() {
                         <input name="name" value={form.name} onChange={onChange} placeholder="Name" className="w-full border p-2 rounded mt-1" required />
                     </div>
                     <div>
-                        <label className="text-xs text-gray-600">Slug</label>
-                        <input name="slug" value={form.slug} onChange={onChange} placeholder="Slug" className="w-full border p-2 rounded mt-1" required />
+                        <label className="text-xs text-gray-600">Slug <span className="text-gray-400">(auto-generated)</span></label>
+                        <input name="slug" value={form.slug} readOnly disabled placeholder="Auto-generated from name" className="w-full border p-2 rounded mt-1 bg-gray-100 text-gray-500 cursor-not-allowed" />
                     </div>
                 </div>
 

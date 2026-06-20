@@ -7,12 +7,22 @@ import ImageUploader from '@/components/common/ImageUploader';
 
 export default function CreateProductPage() {
     const router = useRouter();
+    const generateSlug = (name) =>
+        name.toLowerCase().trim().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
+
     const [form, setForm] = useState({ name: '', slug: '', category: '', priceLabel: 'Contact for Quote', description: '', longDescription: '', images: '', inStock: true });
     const [imageUrls, setImageUrls] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
-    const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+    const onChange = (e) => {
+        const { name, value } = e.target;
+        setForm(prev => ({
+            ...prev,
+            [name]: value,
+            ...(name === 'name' ? { slug: generateSlug(value) } : {}),
+        }));
+    };
     const onSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -50,8 +60,8 @@ export default function CreateProductPage() {
                         <input name="name" value={form.name} onChange={onChange} placeholder="Name" className="w-full border p-2 rounded mt-1" required />
                     </div>
                     <div>
-                        <label className="text-xs text-gray-600">Slug</label>
-                        <input name="slug" value={form.slug} onChange={onChange} placeholder="Slug" className="w-full border p-2 rounded mt-1" required />
+                        <label className="text-xs text-gray-600">Slug <span className="text-gray-400">(auto-generated)</span></label>
+                        <input name="slug" value={form.slug} readOnly disabled placeholder="Auto-generated from name" className="w-full border p-2 rounded mt-1 bg-gray-100 text-gray-500 cursor-not-allowed" />
                     </div>
                 </div>
 

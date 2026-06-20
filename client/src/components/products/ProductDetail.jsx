@@ -83,6 +83,7 @@ const ProductDetail = ({ product }) => {
                             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                                 {product.name}
                             </h1>
+                            {/* Product status badge removed
                             <div className="flex items-center space-x-4 mb-4">
                                 <span className={`px-3 py-1 rounded-full text-sm font-medium ${product.inStock
                                     ? 'bg-green-100 text-green-800'
@@ -91,6 +92,7 @@ const ProductDetail = ({ product }) => {
                                     {product.inStock ? 'In Stock' : 'Out of Stock'}
                                 </span>
                             </div>
+                            */}
                             <p className="text-xl font-semibold text-gray-900 mb-6">
                                 {product.price}
                             </p>
