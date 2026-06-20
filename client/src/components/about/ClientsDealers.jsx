@@ -86,9 +86,9 @@ const dealers = [
         badge: 'bg-emerald-100 text-emerald-700',
     },
     {
-        name: 'Ekta Enterprises',
+        name: 'FNA Industrial Corpration',
         industry: 'Automobile Sector',
-        location: 'Gurugram, Haryana',
+        location: 'Greator Noida, UP',
         icon: FaCar,
         gradient: 'from-orange-500 to-rose-400',
         badge: 'bg-orange-100 text-orange-700',

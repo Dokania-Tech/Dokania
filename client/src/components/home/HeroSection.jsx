@@ -174,7 +174,7 @@ const HeroSection = () => {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="text-base md:text-lg text-white/90 leading-relaxed"
                         >
-                            Dokania Tech Solutions imports DGTW Hydrox Brazing Solutions and manufactures EPS machinery spare parts, serving HVAC, EPS, and automobile sectors across India with reliable, high-quality products and services.
+                            Dokania Tech Solutions importer and distributer of DGTW Hydrox Brazing Solutions and manufactures EPS machinery spare parts, serving HVAC, EPS, and automobile sectors across India with reliable, high-quality products and services.
                         </motion.p>
 
                         {/* CTA Buttons */}

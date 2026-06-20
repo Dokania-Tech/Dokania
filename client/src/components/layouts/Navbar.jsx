@@ -122,7 +122,7 @@ const Navbar = () => {
                                 className="flex items-center space-x-1 bg-[#429449] text-sm text-white px-4 py-2.5 rounded-lg cursor-pointer"
                             >
                                 <FaWhatsapp size={17} className="text-white " />
-                                <span> +91 8130100529</span>
+                                <span> +91 9873776859</span>
                             </motion.div>
                         </a>
                         {isAuthenticated ? (

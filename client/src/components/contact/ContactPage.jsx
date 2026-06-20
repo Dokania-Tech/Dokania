@@ -25,7 +25,7 @@ const ContactPage = () => {
             title: 'Phone',
             details: [
                 '+91 9205553476',
-                '+91 8130100529',
+                '+91 9873776859',
                 'Mon-Fri: 9AM-6PM'
             ],
             color: 'from-green-500 to-emerald-500'

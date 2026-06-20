@@ -10,6 +10,7 @@ const ProductsPage = () => {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [sortBy, setSortBy] = useState('name');
     const [stockFilter, setStockFilter] = useState('all'); // all | in | out
+    const [currentPage, setCurrentPage] = useState(1);
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -60,6 +61,18 @@ const ProductsPage = () => {
                     return 0;
             }
         });
+
+    const ITEMS_PER_PAGE = 9;
+    const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+    const paginatedProducts = filteredProducts.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
+
+    // Reset to page 1 whenever filters/search/sort change
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchTerm, selectedCategory, sortBy, stockFilter]);
 
     return (
         <div className="min-h-screen bg-white">
@@ -130,20 +143,21 @@ const ProductsPage = () => {
                     )}
                     <div className="mb-8">
                         <p className="text-gray-600">
-                            Showing {filteredProducts.length} of {products.length} products
+                            Showing {Math.min(currentPage * ITEMS_PER_PAGE, filteredProducts.length) - Math.min((currentPage - 1) * ITEMS_PER_PAGE, filteredProducts.length)} of {filteredProducts.length} products
+                            {totalPages > 1 && <span className="ml-2 text-gray-400">(Page {currentPage} of {totalPages})</span>}
                         </p>
                     </div>
 
                     <AnimatePresence mode="wait">
                         <motion.div
-                            key={`${selectedCategory}-${searchTerm}-${sortBy}`}
+                            key={`${selectedCategory}-${searchTerm}-${sortBy}-${currentPage}`}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.3 }}
                             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                         >
-                            {filteredProducts.map((product, index) => (
+                            {paginatedProducts.map((product, index) => (
                                 <motion.div
                                     key={product.id}
                                     initial={{ opacity: 0, y: 30 }}
@@ -211,6 +225,50 @@ const ProductsPage = () => {
                             ))}
                         </motion.div>
                     </AnimatePresence>
+
+                    {/* Pagination */}
+                    {totalPages > 1 && (
+                        <div className="flex items-center justify-center gap-2 mt-10 flex-wrap">
+                            <button
+                                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                                disabled={currentPage === 1}
+                                className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                            >
+                                ← Prev
+                            </button>
+                            {Array.from({ length: totalPages }, (_, i) => i + 1)
+                                .filter(page => page === 1 || page === totalPages || Math.abs(page - currentPage) <= 1)
+                                .reduce((acc, page, idx, arr) => {
+                                    if (idx > 0 && page - arr[idx - 1] > 1) acc.push('ellipsis-' + page);
+                                    acc.push(page);
+                                    return acc;
+                                }, [])
+                                .map((item) =>
+                                    String(item).startsWith('ellipsis') ? (
+                                        <span key={item} className="px-2 text-gray-400 select-none">…</span>
+                                    ) : (
+                                        <button
+                                            key={item}
+                                            onClick={() => setCurrentPage(item)}
+                                            className={`w-10 h-10 rounded-lg font-medium transition-colors ${
+                                                currentPage === item
+                                                    ? 'bg-[#7a0021] text-white shadow'
+                                                    : 'border border-gray-300 text-gray-700 hover:bg-gray-100'
+                                            }`}
+                                        >
+                                            {item}
+                                        </button>
+                                    )
+                                )}
+                            <button
+                                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                                disabled={currentPage === totalPages}
+                                className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                            >
+                                Next →
+                            </button>
+                        </div>
+                    )}
 
                     {/* No Results */}
                     {filteredProducts.length === 0 && (
