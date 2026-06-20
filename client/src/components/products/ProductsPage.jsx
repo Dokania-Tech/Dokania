@@ -7,20 +7,37 @@ import Link from 'next/link';
 
 const ProductsPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [debouncedSearch, setDebouncedSearch] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [sortBy, setSortBy] = useState('name');
-    const [stockFilter, setStockFilter] = useState('all'); // all | in | out
     const [currentPage, setCurrentPage] = useState(1);
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [totalPages, setTotalPages] = useState(1);
+    const [total, setTotal] = useState(0);
+
+    const ITEMS_PER_PAGE = 9;
     const { list } = require('@/apis/api').productApi;
 
+    // Debounce search — avoids an API call on every keystroke
+    useEffect(() => {
+        const timer = setTimeout(() => setDebouncedSearch(searchTerm), 400);
+        return () => clearTimeout(timer);
+    }, [searchTerm]);
+
+    // Fetch from backend whenever page or any filter changes
     useEffect(() => {
         const fetchProducts = async () => {
+            setLoading(true);
+            setError('');
             try {
-                const data = await list();
+                const params = { page: currentPage, limit: ITEMS_PER_PAGE };
+                if (debouncedSearch) params.q = debouncedSearch;
+                if (selectedCategory !== 'all') params.category = selectedCategory;
+                params.sortBy = sortBy;
+                const data = await list(params);
                 const mapped = data.products.map((p) => ({
                     id: p._id,
                     name: p.name,
@@ -33,6 +50,8 @@ const ProductsPage = () => {
                     inStock: p.inStock,
                 }));
                 setProducts(mapped);
+                setTotalPages(data.pagination.pages || 1);
+                setTotal(data.pagination.total || 0);
             } catch (err) {
                 setError(err.message || 'Failed to load products');
             } finally {
@@ -40,39 +59,7 @@ const ProductsPage = () => {
             }
         };
         fetchProducts();
-    }, []);
-
-    // Filter and sort products
-    const filteredProducts = products
-        .filter(product => {
-            const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                product.description.toLowerCase().includes(searchTerm.toLowerCase());
-            const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
-            const matchesStock = stockFilter === 'all' ? true : stockFilter === 'in' ? product.inStock : !product.inStock;
-            return matchesSearch && matchesCategory && matchesStock;
-        })
-        .sort((a, b) => {
-            switch (sortBy) {
-                case 'name':
-                    return a.name.localeCompare(b.name);
-                case 'category':
-                    return a.category.localeCompare(b.category);
-                default:
-                    return 0;
-            }
-        });
-
-    const ITEMS_PER_PAGE = 9;
-    const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
-    const paginatedProducts = filteredProducts.slice(
-        (currentPage - 1) * ITEMS_PER_PAGE,
-        currentPage * ITEMS_PER_PAGE
-    );
-
-    // Reset to page 1 whenever filters/search/sort change
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [searchTerm, selectedCategory, sortBy, stockFilter]);
+    }, [currentPage, debouncedSearch, selectedCategory, sortBy]);
 
     return (
         <div className="min-h-screen bg-white">
@@ -111,7 +98,7 @@ const ProductsPage = () => {
                                 type="text"
                                 placeholder="Search products..."
                                 value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
+                                onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
                                 className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-transparent"
                             />
                         </div>
@@ -119,7 +106,7 @@ const ProductsPage = () => {
                         {/* Sort Dropdown */}
                         <select
                             value={sortBy}
-                            onChange={(e) => setSortBy(e.target.value)}
+                            onChange={(e) => { setSortBy(e.target.value); setCurrentPage(1); }}
                             className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-1 focus:border-transparent"
                         >
                             <option value="name">Sort by Name</option>
@@ -143,21 +130,21 @@ const ProductsPage = () => {
                     )}
                     <div className="mb-8">
                         <p className="text-gray-600">
-                            Showing {Math.min(currentPage * ITEMS_PER_PAGE, filteredProducts.length) - Math.min((currentPage - 1) * ITEMS_PER_PAGE, filteredProducts.length)} of {filteredProducts.length} products
+                            Showing {products.length} of {total} products
                             {totalPages > 1 && <span className="ml-2 text-gray-400">(Page {currentPage} of {totalPages})</span>}
                         </p>
                     </div>
 
                     <AnimatePresence mode="wait">
                         <motion.div
-                            key={`${selectedCategory}-${searchTerm}-${sortBy}-${currentPage}`}
+                            key={`${selectedCategory}-${debouncedSearch}-${sortBy}-${currentPage}`}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.3 }}
                             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                         >
-                            {paginatedProducts.map((product, index) => (
+                            {products.map((product, index) => (
                                 <motion.div
                                     key={product.id}
                                     initial={{ opacity: 0, y: 30 }}
@@ -271,7 +258,7 @@ const ProductsPage = () => {
                     )}
 
                     {/* No Results */}
-                    {filteredProducts.length === 0 && (
+                    {!loading && products.length === 0 && (
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
