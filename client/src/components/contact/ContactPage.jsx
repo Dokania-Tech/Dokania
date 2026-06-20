@@ -220,36 +220,6 @@ const ContactPage = () => {
                 </div>
             </section>
 
-            {/* Map Section */}
-            <section className="py-16 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            Find Us
-                        </h2>
-                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                            Visit our office in Noida, Uttar Pradesh. We're conveniently located and easily accessible.
-                        </p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        viewport={{ once: true }}
-                        className="bg-white rounded-2xl shadow-xl overflow-hidden"
-                    >
-                        <MapComponent />
-                    </motion.div>
-                </div>
-            </section>
-
             {/* CTA Section */}
             <section className="py-16 bg-gray-900 ">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
