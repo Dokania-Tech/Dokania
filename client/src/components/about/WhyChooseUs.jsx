@@ -220,7 +220,7 @@ const WhyChooseUs = () => {
             </div>
 
             {/* Client Testimonials */}
-            <div className="mb-16">
+            {/* <div className="mb-16">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -267,7 +267,7 @@ const WhyChooseUs = () => {
                         </motion.div>
                     ))}
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

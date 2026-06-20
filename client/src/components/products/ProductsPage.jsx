@@ -114,15 +114,7 @@ const ProductsPage = () => {
                         </select>
 
                         {/* Stock Filter */}
-                        <select
-                            value={stockFilter}
-                            onChange={(e) => setStockFilter(e.target.value)}
-                            className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-1 focus:border-transparent"
-                        >
-                            <option value="all">All Stock</option>
-                            <option value="in">In Stock</option>
-                            <option value="out">Out of Stock</option>
-                        </select>
+                        
                     </div>
                 </div>
             </section>
@@ -172,11 +164,11 @@ const ProductsPage = () => {
                                                 {product?.category}
                                             </span>
                                         </div>
-                                        <div className="absolute top-4 left-4">
+                                        {/* <div className="absolute top-4 left-4">
                                             <span className={`px-3 py-1 text-white text-xs font-medium rounded-full ${product.inStock ? 'bg-green-500' : 'bg-red-500'}`}>
                                                 {product.inStock ? 'In Stock' : 'Out of Stock'}
                                             </span>
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                     {/* Product Content */}
