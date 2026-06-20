@@ -7,7 +7,7 @@ import { FiTarget } from "react-icons/fi";
 import CompanyOverview from './CompanyOverview';
 import MissionVision from './MissionVision';
 import ProductsServices from './ProductsServices';
-import ClientsDealers from './ClientsDealers';
+
 import WhyChooseUs from './WhyChooseUs';
 
 const AboutPage = () => {
@@ -17,7 +17,6 @@ const AboutPage = () => {
         { id: 'overview', label: 'Company Overview', icon: FaBuilding },
         { id: 'mission', label: 'Mission & Vision', icon: FiTarget },
         { id: 'products', label: 'Products & Services', icon: FaCog },
-        { id: 'clients', label: 'Clients & Dealers', icon: FaUsers },
         { id: 'why-us', label: 'Why Choose Us', icon: FaAward }
     ];
 
@@ -100,7 +99,6 @@ const AboutPage = () => {
                     {activeSection === 'overview' && <CompanyOverview />}
                     {activeSection === 'mission' && <MissionVision />}
                     {activeSection === 'products' && <ProductsServices />}
-                    {activeSection === 'clients' && <ClientsDealers />}
                     {activeSection === 'why-us' && <WhyChooseUs />}
                 </div>
             </section>
