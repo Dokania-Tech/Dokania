@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaLinkedin, FaTwitter, FaInstagram, FaYoutube, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -44,7 +44,7 @@ const Footer = () => {
                     <div className="lg:col-span-1">
                         <h3 className="text-lg font-semibold text-green-700 mb-4">About Us</h3>
                         <p className="text-gray-700 text-sm leading-relaxed">
-                            Dokania Tech Solutions imports DGTW Hydrox Brazing Solutions and manufactures EPS machinery spare parts, serving HVAC, EPS, and automobile sectors across India with reliable, high-quality products and services.
+                            Dokania Tech Solutions importer and disributer of DGTW Hydrox Brazing Solutions and manufactures EPS machinery spare parts, serving HVAC, EPS, and automobile sectors across India with reliable, high-quality products and services.
                         </p>
                     </div>
 
@@ -74,9 +74,9 @@ const Footer = () => {
                                 <a
                                     href="#"
                                     className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center hover:bg-green-700 transition-colors duration-200"
-                                    aria-label="Facebook"
+                                    aria-label="LinkedIn"
                                 >
-                                    <FaFacebook size={14} />
+                                    <FaLinkedin size={14} />
                                 </a>
                                 <a
                                     href="#"
@@ -109,7 +109,7 @@ const Footer = () => {
             <div className="border-t border-gray-300">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                     <p className="text-center text-sm text-gray-600">
-                        Copyright © 2025 Dokania Tech Solutions. | Website Designed & Developed by Santosh Kumar
+                        Copyright © 2026 Dokania Tech Solutions.
                     </p>
                 </div>
             </div>

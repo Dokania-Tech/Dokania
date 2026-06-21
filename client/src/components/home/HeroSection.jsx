@@ -14,7 +14,7 @@ const HeroSection = () => {
             id: 1,
             title: 'DGTW Hydrox Brazing Solutions',
             description: 'High-quality brazing solutions for industrial applications',
-            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1781963913/Screenshot_2026-06-20_192139_qkbhss.png',
+            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1782024156/04_production_line_hd_1_ryqhww.png',
             fallbackGradient: 'from-blue-500 to-cyan-500',
             // overlay: 'rgba(59, 130, 246, 0.7)' // Blue overlay
         },
@@ -22,7 +22,7 @@ const HeroSection = () => {
             id: 2,
             title: 'EPS Machinery Parts',
             description: 'Precision-engineered spare parts for EPS machinery',
-            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1781963914/Screenshot_2026-06-20_192230_jlyibd.png',
+            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1782024089/copy_of_02_brazing_torch_tips_hd_tiamv1.png',
             fallbackGradient: 'from-green-500 to-emerald-500',
             // overlay: 'rgba(34, 197, 94, 0.7)' // Green overlay
         },
@@ -30,15 +30,15 @@ const HeroSection = () => {
             id: 3,
             title: 'HVAC Solutions',
             description: 'Complete HVAC system components and solutions',
-            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1781963914/Screenshot_2026-06-20_192022_wflq1t.png',
+            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1782024015/05_brazing_machine_hd_vbjudf.png',
             fallbackGradient: 'from-orange-500 to-red-500',
-           
+
         },
         {
             id: 4,
             title: 'Automobile Parts',
             description: 'Reliable automotive components and spare parts',
-            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1781963913/Screenshot_2026-06-20_192206_cbzllg.png',
+            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1782024011/03_gas_savers_hd_eatzxh.png',
             fallbackGradient: 'from-purple-500 to-pink-500',
             // overlay: 'rgba(168, 85, 247, 0.7)' // Purple overlay
         },
@@ -46,9 +46,9 @@ const HeroSection = () => {
             id: 5,
             title: 'Industrial Couplings',
             description: 'Heavy-duty couplings for industrial machinery',
-            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1781963913/Screenshot_2026-06-20_192106_hj0bgl.png',
+            image: 'https://res.cloudinary.com/dvihdsxl1/image/upload/v1782024005/01_copper_fittings_hd_fdvecf.png',
             fallbackGradient: 'from-indigo-500 to-purple-500',
-           
+
         }
     ];
 
@@ -70,11 +70,11 @@ const HeroSection = () => {
     };
 
     return (
-        <section className="relative h-[600px] overflow-hidden">
+        <section className="relative h-[90vh] mt-[32px] lg:mt-[8px] overflow-hidden">
             {/* Background Carousel */}
             <div className="absolute inset-0">
                 <motion.div
-                    className="flex h-[600px]"
+                    className="flex h-[90vh]"
                     animate={{ x: `-${currentSlide * 100}%` }}
                     transition={{ duration: 0.8, ease: "easeInOut" }}
                 >
@@ -94,12 +94,10 @@ const HeroSection = () => {
                                 }}
                             ></div>
 
-                            {/* Color Overlay */}
+                            {/* Dark Overlay — ensures text visibility on light/white images */}
                             <div
-                                className="absolute inset-0 opacity-50"
-                                style={{
-                                    backgroundColor: image.overlay
-                                }}
+                                className="absolute inset-0"
+                                style={{ backgroundColor: 'rgba(0, 0, 0, 0.35)' }}
                             ></div>
 
                             {/* Background Pattern */}
@@ -151,17 +149,17 @@ const HeroSection = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="max-w-2xl space-y-8"
                     >
-                    
-                      
+
+
                         {/* Main Heading */}
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
-                            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
+                            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-lg"
                         >
                             Dokania
-                            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white to-yellow-200">
+                            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white to-white">
                                 Tech
                             </span>
                             Solutions
@@ -172,7 +170,7 @@ const HeroSection = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="text-base md:text-lg text-white/90 leading-relaxed"
+                            className="text-base md:text-lg text-white/95 leading-relaxed drop-shadow"
                         >
                             Dokania Tech Solutions importer and distributer of DGTW Hydrox Brazing Solutions and manufactures EPS machinery spare parts, serving HVAC, EPS, and automobile sectors across India with reliable, high-quality products and services.
                         </motion.p>
@@ -197,7 +195,7 @@ const HeroSection = () => {
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="px-6 py-2.5 cursor-pointer border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-200 backdrop-blur-sm text-sm md:text-base"
+                                    className="px-6 py-2.5 cursor-pointer border-2 border-red-500 text-red-500 rounded-lg font-semibold hover:bg-red-500 hover:text-gray-900 transition-all duration-200 backdrop-blur-sm text-sm md:text-base"
                                 >
                                     Get Quote
                                 </motion.button>
