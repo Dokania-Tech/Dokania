@@ -15,19 +15,8 @@ const ClientsSection = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-10"
                 >
-                    <h2
-                        className="
-                            text-3xl font-extrabold text-white
-                            bg-gradient-to-r from-pink-500 to-rose-600
-                            px-6 py-3 rounded-xl
-                            shadow-[0_8px_0_rgb(190,24,93)]
-                            inline-block
-                            hover:translate-y-1
-                            hover:shadow-[0_4px_0_rgb(190,24,93)]
-                            transition-all duration-200
-                        "
-                    >
-                        Trusted Clients
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                        Trusted <span className="text-transparent bg-clip-text bg-[#E06B80]">Clients</span>
                     </h2>
                     <p className="text-gray-600 mt-4">
                         Companies across industries rely on our products and services.

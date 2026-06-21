@@ -17,11 +17,6 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Dokania Tech Solution",
   description: "Dokania Tech Solution - Your trusted technology partner",
-  icons: {
-    icon: "/images/logo1.png",
-    shortcut: "/images/logo1.png",
-    apple: "/images/logo1.png",
-  },
 };
 
 export default function RootLayout({ children }) {

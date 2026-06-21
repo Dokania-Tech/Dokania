@@ -74,7 +74,7 @@ const VideoSection = ({ videoUrl = '', videos = [], autoplay = true }) => {
 
                         return (
                             <div key={idx} className="w-full">
-                                <div className="relative" style={{ paddingTop: '56.25%' }}>
+                                <div className="relative" style={{ paddingTop: '100%' }}>
                                     {!errors[idx] && (videoFile || local) ? (
                                         <video
                                             src={url}

@@ -33,6 +33,11 @@ const industries = [
             'Ezentech India Pvt Ltd.',
             'PG Technoplast Pvt Ltd.',
             'Next Generation Manufacturers Pvt Ltd.',
+            'Bio Copper Heatcraft Private Limited',
+            'Kamla Metal Private Limited',
+            'Koolking Udhayog Private Limited',
+            'Yeemak Private Limited',
+            
         ],
     },
     {
@@ -150,9 +155,7 @@ const ClientsDealers = () => {
 
             {/* ── Heading ─────────────────────────────────────────── */}
             <motion.div {...fadeUp()} className="text-center mb-12">
-                <span className="inline-block px-4 py-1 rounded-full bg-rose-50 text-rose-500 text-sm font-semibold tracking-wide mb-3">
-                    Network
-                </span>
+                
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
                     Our Clients &amp; Dealers
                 </h2>
