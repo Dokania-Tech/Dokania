@@ -18,6 +18,7 @@ const ContactForm = ({ onSuccess }) => {
         inquiryType: 'general'
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
     const [errors, setErrors] = useState({});
 
     const inquiryTypes = [
@@ -105,7 +106,8 @@ const ContactForm = ({ onSuccess }) => {
                 message: '',
                 inquiryType: 'general'
             });
-            onSuccess();
+            onSuccess?.();
+            setSubmitted(true);
         } catch (error) {
             setErrors({ submit: error.message || 'Failed to send message' });
         } finally {
@@ -328,7 +330,7 @@ const ContactForm = ({ onSuccess }) => {
             </motion.div>
 
             {/* Success Message */}
-            {onSuccess && (
+            {submitted && (
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}

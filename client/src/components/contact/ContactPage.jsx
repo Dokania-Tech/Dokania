@@ -34,9 +34,7 @@ const ContactPage = () => {
             icon: FaEnvelope,
             title: 'Email',
             details: [
-                'info@dokaniatech.com',
                 'sales@dokaniatech.com',
-                'support@dokaniatech.com'
             ],
             color: 'from-orange-500 to-red-500'
         },
@@ -58,18 +56,6 @@ const ContactPage = () => {
             email: 'sales@dokaniatech.com',
             phone: '+91 9205553476',
             description: 'For product inquiries, quotes, and sales support'
-        },
-        {
-            name: 'Technical Support',
-            email: 'support@dokaniatech.com',
-            phone: '+91 9205960101',
-            description: 'For technical assistance and product support'
-        },
-        {
-            name: 'General Inquiries',
-            email: 'info@dokaniatech.com',
-            phone: '+91 9205553476 ',
-            description: 'For general information and business inquiries'
         }
     ];
 
@@ -238,16 +224,16 @@ const ContactPage = () => {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <motion.a
-                                href="tel:+919205960101"
+                                href="tel:+919205553476"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="px-8 py-4 bg-white text-gray-900 rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
                             >
                                 <FaPhone className="inline mr-2" />
-                                Call Now: +91 9205960101
+                                Call Now: +91 9205553476
                             </motion.a>
                             <motion.a
-                                href="mailto:info@dokaniatech.com"
+                                href="mailto:sales@dokaniatech.com"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-200"
