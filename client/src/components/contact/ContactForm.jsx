@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaUser, FaEnvelope, FaPhone, FaBuilding, FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaPhone, FaBuilding, FaBriefcase, FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
 import { FaMessage } from "react-icons/fa6";
 import { contactApi } from '@/apis/api';
 
@@ -13,6 +13,7 @@ const ContactForm = ({ onSuccess }) => {
         email: '',
         phone: '',
         company: '',
+        position: '',
         subject: '',
         message: '',
         inquiryType: 'general'
@@ -92,6 +93,7 @@ const ContactForm = ({ onSuccess }) => {
                 name: formData.name,
                 email: formData.email,
                 phone: formData.phone,
+                position: formData.position || undefined,
                 subject: formData.subject,
                 message: formData.message,
                 source: formData.inquiryType === 'sales' ? 'quote' : 'contact',
@@ -102,6 +104,7 @@ const ContactForm = ({ onSuccess }) => {
                 email: '',
                 phone: '',
                 company: '',
+                position: '',
                 subject: '',
                 message: '',
                 inquiryType: 'general'
@@ -218,6 +221,28 @@ const ContactForm = ({ onSuccess }) => {
                     </div>
                 </motion.div>
             </div>
+
+            {/* Position Row */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.45 }}
+            >
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Position / Job Title
+                </label>
+                <div className="relative">
+                    <FaBriefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <input
+                        type="text"
+                        name="position"
+                        value={formData.position}
+                        onChange={handleInputChange}
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        placeholder="e.g. Procurement Manager"
+                    />
+                </div>
+            </motion.div>
 
             {/* Inquiry Type and Subject Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -28,7 +28,7 @@ export default function AdminContactsPage() {
     const filtered = items.filter(
         (m) =>
             !query ||
-            `${m.name} ${m.email} ${m.phone} ${m.subject}`
+            `${m.name} ${m.email} ${m.phone} ${m.position} ${m.subject}`
                 .toLowerCase()
                 .includes(query.toLowerCase())
     );
@@ -55,6 +55,7 @@ export default function AdminContactsPage() {
                                 <th className="p-2 whitespace-nowrap">Name</th>
                                 <th className="p-2 whitespace-nowrap">Email</th>
                                 <th className="p-2 whitespace-nowrap">Phone</th>
+                                <th className="p-2 whitespace-nowrap">Position</th>
                                 <th className="p-2 whitespace-nowrap">Subject</th>
                                 <th className="p-2 whitespace-nowrap">Source</th>
                                 <th className="p-2 whitespace-nowrap">Message</th>
@@ -71,6 +72,7 @@ export default function AdminContactsPage() {
                                     <td className="p-2 whitespace-nowrap">{m.name}</td>
                                     <td className="p-2 whitespace-nowrap">{m.email}</td>
                                     <td className="p-2 whitespace-nowrap">{m.phone || '—'}</td>
+                                    <td className="p-2 whitespace-nowrap">{m.position || '—'}</td>
                                     <td className="p-2 whitespace-nowrap max-w-[160px] truncate" title={m.subject}>{m.subject}</td>
                                     <td className="p-2 whitespace-nowrap">
                                         <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${m.source === 'quote' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}`}>
@@ -83,7 +85,7 @@ export default function AdminContactsPage() {
                             ))}
                             {filtered.length === 0 && (
                                 <tr>
-                                    <td colSpan={7} className="p-4 text-center text-gray-400">No messages found.</td>
+                                    <td colSpan={8} className="p-4 text-center text-gray-400">No messages found.</td>
                                 </tr>
                             )}
                         </tbody>
@@ -103,6 +105,7 @@ export default function AdminContactsPage() {
                             <div><span className="font-medium text-gray-500">Name:</span> {selected.name}</div>
                             <div><span className="font-medium text-gray-500">Email:</span> {selected.email}</div>
                             <div><span className="font-medium text-gray-500">Phone:</span> {selected.phone || '—'}</div>
+                            <div><span className="font-medium text-gray-500">Position:</span> {selected.position || '—'}</div>
                             <div>
                                 <span className="font-medium text-gray-500">Source:</span>{' '}
                                 <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${selected.source === 'quote' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}`}>
