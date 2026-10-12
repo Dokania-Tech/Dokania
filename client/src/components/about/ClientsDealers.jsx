@@ -37,7 +37,10 @@ const industries = [
             'Kamla Metal Private Limited',
             'Koolking Udhayog Private Limited',
             'Yeemak Private Limited',
-            
+            'LG Electronic',
+            'IFB Industries Ltd',
+
+
         ],
     },
     {
@@ -155,7 +158,7 @@ const ClientsDealers = () => {
 
             {/* ── Heading ─────────────────────────────────────────── */}
             <motion.div {...fadeUp()} className="text-center mb-12">
-                
+
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
                     Our Clients &amp; Dealers
                 </h2>
@@ -195,11 +198,10 @@ const ClientsDealers = () => {
                             key={tab.id}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                                activeTab === tab.id
+                            className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer ${activeTab === tab.id
                                     ? 'bg-white text-rose-600 shadow-md'
                                     : 'text-gray-500 hover:text-gray-700'
-                            }`}
+                                }`}
                         >
                             <tab.icon size={14} />
                             {tab.label}
